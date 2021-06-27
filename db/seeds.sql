@@ -1,15 +1,4 @@
-use employee_trackerDB;
--- or use employee?
-
-
---Ceramics Dept 100-- Instructor-1 -- Studio Asst-2 -- 
--- Caitlin Quinn -- Valeen Tom -- Chris Lee -- 
---Painting 200-- Instructor-1 -- Studio Asst-2 -- 
--- Rachel Cohen -- Lace Cassidy -- Jenna Martin
---Poetry 300-- Instructor-1 -- Studio Asst-2 --
--- Andrew Rolfsen -- David Rivera -- Rene Fontenot
---Life Drawing 400-- Instructor-1 -- Studio Asst-2 -- 
--- Nisha Atalie - Loren Call -- River Solverson
+USE employee_trackerDB;
 
 -- EMPLOYEES
 -- Ceramics
