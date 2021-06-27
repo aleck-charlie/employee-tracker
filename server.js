@@ -97,11 +97,49 @@ inquirer
   })
 };
 
-function addRole(){
-
+function addRoles(){
+  viewRoles();
+  inquirer
+    .prompt(
+      {
+        name: "newRole",
+        type: "input",
+        message: "What is the new role title?",
+      }
+    )
+    .then((answer) => {
+      connection.query(
+        "INSERT INTO role SET ?",
+        {
+          name: answer.newRole,
+        },
+        (err, res) => {
+          if (err) throw err;
+          console.log(`${res.affectedRows} role created!\n`);
+        }
+      );
+    })
 };
 
 function addEmploy(){
+  viewEmploy();
+  inquirer
+  .prompt([
+    {
+      name: "firstname",
+      type: "input",
+      message: "What is the employee's first name?",
+    },
+    {
+      name: "lastname",
+      type: "input",
+      message: "What is the employee's last name?",
+    },
+    {
+      name: "roleId",
+      type: "list",
+      message: "What is the employee's role?",
+    }]);
 
 };
 
@@ -136,7 +174,7 @@ function updateEmploy(){
   //call all employees
   //choice of employees
   //update role
-}
+};
 
 start(); 
 
@@ -144,4 +182,4 @@ connection.connect((err) => {
   if (err) throw err;
   console.log(`Connection successful!`);
 
-});
+})
