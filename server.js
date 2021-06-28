@@ -122,25 +122,36 @@ function addRoles(){
 };
 
 function addEmploy(){
-  viewEmploy();
   inquirer
   .prompt([
-    {
-      name: "firstname",
-      type: "input",
-      message: "What is the employee's first name?",
-    },
-    {
-      name: "lastname",
-      type: "input",
-      message: "What is the employee's last name?",
-    },
-    {
-      name: "roleId",
-      type: "list",
-      message: "What is the employee's role?",
-    }]);
-
+      {
+          name: "firstName",
+          type: "input",
+          message: "Enter the employee\'s first name."
+      },
+      {
+          name: "lastName",
+          type: "input",
+          message: "Enter the employee\'s last name."
+      },
+      {
+          name: "role",
+          type: "list",
+          choices: ['1', '2'],
+          message: "Select the employee\'s role."
+      },
+  ])
+  .then((answer) => {
+      connection.query(
+          "INSERT INTO employee (first_name, last_name, role_id) VALUES (?, ?, ?)",
+          [answer.firstName, answer.lastName, answer.role],
+          (err, res) => {
+              if (err) throw err;
+              console.log(`${res.affectedRows} added!\n`);
+          }
+      );
+      viewEmploy();
+  })
 };
 
 function updateEmploy(){
